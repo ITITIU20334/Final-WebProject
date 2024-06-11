@@ -9,7 +9,7 @@ Web application built for E-Commerce using PHP, JavaScript, and backed by an SQL
 
 # Installation
 Clone and change directory:
-   git clone https://github.com/ITITIU20334/Web-Application
+   git clone https://github.com/ITITIU20334/Final-WebProject
 
 # Technologies
 - Language: [PHP](https://www.php.net/), [JavaScript](https://www.w3schools.com/js/)
