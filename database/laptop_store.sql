@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 19, 2023 at 12:02 PM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Generation Time: May 17, 2024 at 04:01 PM
+-- Server version: 8.2.0
+-- PHP Version: 8.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,14 +34,35 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `adminname` varchar(200) NOT NULL,
   `mypassword` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id`, `email`, `adminname`, `mypassword`) VALUES
-(1, 'hoangan@gmail.com', 'admin', 'e10adc3949ba59abbe56e057f20f883e');
+(4, 'tie@gmail.com', 'admin', 'e10adc3949ba59abbe56e057f20f883e');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bills`
+--
+
+DROP TABLE IF EXISTS `bills`;
+CREATE TABLE IF NOT EXISTS `bills` (
+  `bills_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `total_price` int DEFAULT NULL,
+  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `phone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `name` text NOT NULL,
+  `date` date NOT NULL,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`bills_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -58,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -71,16 +92,35 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'hoang an'),
-(3, 'hoang an'),
-(4, 'eeee');
+(6, 'Accessories'),
+(7, 'Laptop'),
+(8, 'Smartphones'),
+(9, 'Cameras');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_bill`
+--
+
+DROP TABLE IF EXISTS `detail_bill`;
+CREATE TABLE IF NOT EXISTS `detail_bill` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_bills` int DEFAULT NULL,
+  `id_product` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_bills` (`id_bills`),
+  KEY `id_product` (`id_product`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -100,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -118,19 +158,19 @@ CREATE TABLE IF NOT EXISTS `products` (
   `category_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `model`, `image`, `price`, `description`, `category_id`) VALUES
-(7, 'Ky thuat lap trinha', '../../assets/imgScreenshot 2023-11-22 111446.png', 2000, 'qưe', 1),
-(9, 'Ky thuat lap trinhe', '../../assets/imghinh3.jpg', 2000, 'hehehehe', 4),
-(10, 'LapTop 1', '../../assets/imghinh1.jpg', 10000, 'Laptop1', 1),
-(11, 'LapTop 2', '../../assets/imghinh3.jpg', 2, '222', 1),
-(12, 'LapTop 3', '../../assets/imgScreenshot 2023-11-23 124859.png', 12345, '111', 1),
-(13, 'LapTop4', '../../assets/imgScreenshot 2023-11-28 193434.png', 123456, '123456', 4);
+(14, 'HeadPhone', '../../assets/imgproduct02.png', 20, 'Sony WH-CH520 over-ear headphones feature DSEE digital sound to help deliver realistic sound along with a battery that lasts up to 40 hours. Besides, this Sony headset product has a quite compact design and an extremely convenient integrated microphone design.', 6),
+(15, 'Laptop', '../../assets/imgproduct03.png', 50, 'Macbook Air M1 is a product line with a thin, light, luxurious and sophisticated design along with an affordable price, so MacBook Air has attracted a large number of users to love and choose. This is also one of the latest Macbook Air versions that customers cannot miss when coming to CellphoneS. Below are details about the design and configuration of the machine.', 7),
+(16, 'Headphone', '../../assets/imgproduct05.png', 15, 'The Edifier W820NB Plus bluetooth headset is a very valuable upgrade, equipped with many modern features. And the manufacturer perfected the Edifier headphone device with extremely optimal, simple, youthful design.', 6),
+(17, 'Laptop', '../../assets/imgproduct06.png', 55, 'Asus Vivobook 15 OLED A1505VA-L1114W laptop brings great work and entertainment experiences with extremely impressive configuration parameters. The device helps you complete all tasks quickly when integrating a leading processor. With a brilliant OLED screen, the Asus Vivobook laptop also opens up a world of extremely rich and realistic entertainment.', 7),
+(18, 'Samsung J5', '../../assets/imgproduct07.png', 10, 'Galaxy J5 Prime is a mid-range smartphone with a very reasonable price based on configuration for a famous manufacturer like Samsung.', 8),
+(19, 'Camera', '../../assets/imgproduct09.png', 10, 'Instax Camera Mini 12 will continue its predecessors to become an instant photography device worth owning in the near future. In addition to inheriting a youthful, easy-to-use design, Fujifilm Instax Camera Mini 12 will also have many improvements to bring better quality photos.', 9);
 
 -- --------------------------------------------------------
 
@@ -145,28 +185,37 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(200) NOT NULL,
   `mypassword` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `mypassword`) VALUES
-(1, 'user', 'hoangan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(3, 'user3', 'hoangan121102@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(4, 'user4', 'user3@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(5, 'user43', 'admin1@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+(6, 'truongne', 'truongne@gmail', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `bills`
+--
+ALTER TABLE `bills`
+  ADD CONSTRAINT `bills_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `detail_bill`
+--
+ALTER TABLE `detail_bill`
+  ADD CONSTRAINT `detail_bill_ibfk_1` FOREIGN KEY (`id_bills`) REFERENCES `bills` (`bills_id`),
+  ADD CONSTRAINT `detail_bill_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `orders`
