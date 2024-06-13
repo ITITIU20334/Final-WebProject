@@ -1,6 +1,16 @@
-<?php     
-session_start();
-include "admin/config/config.php"; ?>
+<?php     include "admin/config/config.php"; 
+   $timkiem = $_GET['timkiem'] ?? '';
+
+   // Chuẩn bị câu truy vấn
+   $stm = $conn->prepare("SELECT *
+   FROM categories
+   JOIN products ON categories.id = products.category_id
+   WHERE categories.name LIKE '%$timkiem%' OR products.model LIKE '%$timkiem%';
+   ");
+   $stm->execute();
+   $data = $stm->fetchAll(PDO::FETCH_ASSOC);
+   $count = $stm->rowCount();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +109,7 @@ include "admin/config/config.php"; ?>
 							<div class="store-sort">
 								
 
-								
+								<p>Results found <?php echo $count; ?></p>
 							</div>
 							<ul class="store-grid">
 
@@ -109,16 +119,10 @@ include "admin/config/config.php"; ?>
 
 						<!-- store products -->
 						<div class="row">
-							
 						<?php    
                     // Lấy id danh mục từ URL
-                    $id = $_GET['idcate'] ?? '';
-
-                    // Chuẩn bị câu truy vấn
-                    $stm = $conn->prepare("SELECT * FROM products WHERE category_id = $id");
-                    $stm->execute();
-                    $data = $stm->fetchAll(PDO::FETCH_ASSOC);
-
+                 
+             
                     // Kiểm tra nếu có sản phẩm để hiển thị
                     if ($stm->rowCount() > 0) {
                         foreach ($data as $product) {
@@ -144,15 +148,14 @@ include "admin/config/config.php"; ?>
 						
 									</div>
 									<div class="add-to-cart">
-										<a href="cart.php?id=<?php echo $product['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
-										
+									<a href="cart.php?id=<?php echo $product['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
 									</div>
 								</div>
 							</div>
 							<!-- /product -->
                       <?php  }
                     } else {
-                        echo '<p>No products in this category.</p>';
+                        echo '<p>This product could not be found.</p>';
                     }
                 ?>
 						</div>

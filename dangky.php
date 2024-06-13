@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng ký</title>
+    <title>Register</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="text-center mt-5">Form Đăng ký</h2>
+        <h2 class="text-center mt-5">Form Registration</h2>
         <div class="form-container">
             <form action="userDangky.php" method="post" class="mt-4">
                 <div class="form-group">
@@ -27,16 +27,17 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="username">Tên đăng nhập:</label>
+                    <label for="username">Username:</label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="mypassword">Mật khẩu:</label>
+                    <label for="mypassword">Password:</label>
                     <input type="password" class="form-control" id="mypassword" name="mypassword" required>
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Đăng ký</button>
+                <div class="col-3 mx-auto">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
             </form>
         </div>
     </div>
