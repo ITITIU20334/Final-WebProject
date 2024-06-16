@@ -96,7 +96,7 @@ include "admin/config/config.php";
 						<div class="product-details">
 							<h2 class="product-name"><?php echo $r['model'] ?></h2>
 							<div>
-								<h3 class="product-price"> <?php echo $r['price'] ?></h3>
+								<h3 class="product-price">$<?php echo $r['price'] ?></h3>
 								<span class="product-available">Stocking</span>
 							</div>
 							<p><?php echo $r['description'] ?></p>

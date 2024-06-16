@@ -1,4 +1,6 @@
-<?php     include "admin/config/config.php"; 
+<?php     
+session_start();
+include "admin/config/config.php"; 
    $timkiem = $_GET['timkiem'] ?? '';
 
    // Chuẩn bị câu truy vấn

@@ -133,7 +133,7 @@ include "admin/config/config.php"; ?>
 									</div>
 									<div class="product-body">
 										<h3 class="product-name"><a href="product.php?id=<?php echo $product['id'] ?>"><?php echo $product['model'] ?></a></h3>
-										<h4 class="product-price"><?php echo $product['price'] ?></h4>
+										<h4 class="product-price">$<?php echo $product['price'] ?></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>

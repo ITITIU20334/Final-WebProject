@@ -78,7 +78,7 @@ include  "admin/config/config.php"; ?>
                     </div>
                     <div class="product-body">
                         <h3 class="product-name"><a href="#"><?php echo $product['model']; ?></a></h3>
-                        <h4 class="product-price"><span class="qty">SL: <?php echo $product['quantity']; ?></span>Price: $<?php echo $product['price']; ?></h4>
+                        <h4 class="product-price"><span class="qty">Quantity: <?php echo $product['quantity']; ?></span>Price: $<?php echo $product['price']; ?></h4>
                         <a href='deleteviewcart.php?key=<?php echo $key ?>'>Delete</a>
                     </div>
                 </div>
