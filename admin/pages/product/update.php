@@ -27,9 +27,9 @@ if (isset($_POST['submit'])) {
 
 
     if ($stmt) {
-        echo "Sản phẩm đã được cập nhật!";
+        echo "The product has been updated!";
     } else {
-        echo "Có lỗi xảy ra khi cập nhật sản phẩm!";
+        echo "An error occurred while adding a product!";
     }
 }
 

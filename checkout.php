@@ -159,20 +159,6 @@ include "admin/config/config.php"; ?>
 									Direct Bank Transfer
 								</label>
 							</div>
-							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-2">
-								<label for="payment-2">
-									<span></span>
-									Cheque Payment
-								</label>
-							</div>
-							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-3">
-								<label for="payment-3">
-									<span></span>
-									Paypal System
-								</label>
-							</div>
 						</div>
 						<div class="input-checkbox">
 							<input type="checkbox" id="terms">

@@ -35,9 +35,8 @@
                     <label for="mypassword">Password:</label>
                     <input type="password" class="form-control" id="mypassword" name="mypassword" required>
                 </div>
-                <div class="col-3 mx-auto">
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </div>
+                
+                <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>
     </div>

@@ -24,16 +24,16 @@
                                     <input type="text" class="form-control" id="recipient-name" name="name">
                                   </div>
                                   <div class="">
-                                    <label for="recipient-name" class="col-form-label">img:</label>
+                                    <label for="recipient-name" class="col-form-label">Image:</label>
                                     <input type="file" class="form-control" id="recipient-name" accept=".jpg,.png,.jpeg" name="img">
                                   </div>
-                                  <label for="recipient-name" class="col-form-label">Gia:</label>
+                                  <label for="recipient-name" class="col-form-label">Price:</label>
                                     <input type="text" class="form-control" id="recipient-name" name="gia">
                                   </div>
-                                  <label for="recipient-name" class="col-form-label">Ghichu:</label>
+                                  <label for="recipient-name" class="col-form-label">Description:</label>
                                     <input type="text" class="form-control" id="recipient-name" name="ghichu">
                                   </div>
-                                  <label for="recipient-name" class="col-form-label">Loai:</label>
+                                  <label for="recipient-name" class="col-form-label">Category:</label>
                                   <select name="loai" id="loai">
                                     <?php
                                               foreach($dataCate as $row)
@@ -43,7 +43,7 @@
                                     ?>
                                 </select>
                                   <div class="modal-footer">
-                                <button type="submit" name="submit" class="btn btn-primary">Them</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Add</button>
                               </div>
                                 </form>
 

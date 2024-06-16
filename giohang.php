@@ -30,8 +30,6 @@
                             <h4 class="product-price"><span class="qty"><?php echo $product['quantity']; ?></span>$<?php echo $product['price']; ?></h4>
                             <a href='XoaGioHang.php?key=<?php echo $key ?>'>Delete</a>
                         </div>
-                        <!-- Nút Xóa sản phẩm có thể được thêm ở đây -->
-                        <!-- <button class="delete"><i class="fa fa-close"></i></button> -->
                     </div>
             <?php
                 }
@@ -55,25 +53,18 @@
         </div>
         <div class="cart-btns">
             <?php 
-             if (!isset($_SESSION['logged_in']) || !isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-                echo ('<a >View Cart</a>');
+            if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+                echo '<a href="userlogin.php">View Cart</a>';
+                echo '<a href="userlogin.php">Checkout <i class="fa fa-arrow-circle-right"></i></a>';
+            } else {
+                echo '<a href="viewcart.php">View Cart</a>';
+                if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+                    echo '<a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>';
+                } else {
+                    echo '<a href="checkout.php">Checkout <i class="fa fa-arrow-circle-right"></i></a>';
+                }
             }
-             else{
-                echo ('<a href="viewcart.php">View Cart</a>');
-            }
-            
             ?>
-            <?php 
-             if (!isset($_SESSION['logged_in']) || !isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-                echo ('<a >Checkout<i class="fa fa-arrow-circle-right"></i></a>');
-            }
-             else{
-                echo ('<a href="checkout.php">Checkout <i class="fa fa-arrow-circle-right"></i></a>');
-            }
-            
-            ?>
-            
         </div>
     </div>
 </div>
-<!-- /Cart -->

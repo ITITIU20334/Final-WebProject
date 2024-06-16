@@ -8,6 +8,12 @@ session_start();
     <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Các CSS tùy chỉnh có thể được thêm vào đây -->
+     <style>
+        .success{
+  color: green;
+  font-weight: bold;
+}
+     </style>
 </head>
 <body>
 
@@ -20,13 +26,13 @@ session_start();
                 </div>
                 <div class="card-body">
                      <?php
-                    if (isset($_SESSION['thanhcong'])) { ?>
-                        <div class="alert alert-success" role="alert"> Registration success! </div>
-                        <?php unset($_SESSION['thanhcong']);
+                    if (isset($_SESSION['thanhcong'])) {
+                        echo '<div class = "success">' . $_SESSION['thanhcong'] . '</div>';
+                        unset($_SESSION['thanhcong']); 
                     }
-                    elseif (isset($_SESSION['login_er'])){ ?>
-                        <div class="alert alert-danger" role="alert"> Wrong Username or Password. Please check! </div>
-                        <?php unset($_SESSION['login_er']);
+                    elseif (isset($_SESSION['login_er'])){ 
+                        echo '<div class="alert alert-danger" role="alert"> Wrong Username or Password. Please check! </div>';
+                        unset($_SESSION['login_er']);
                     }
                     ?>
                     <form action="dangnhap.php" method="post">
@@ -38,13 +44,9 @@ session_start();
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control" id="password" required>
                         </div>
-                        <div class="d-grid mb-1 gap-2">
-                            <button type="submit" name="login" class="btn btn-primary">Login</button>
-                        </div>
+                        <button type="submit" name="login" class="btn btn-primary">Login</button>
+                        <a href="dangky.php" class="btn btn-primary">Register</a>
                     </form>
-                    <div class="d-grid gap-2">
-                        <a href="dangky.php" class="btn btn-outline-primary" role="button">Register</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -52,6 +54,5 @@ session_start();
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Các script JavaScript tùy chỉnh có thể được thêm vào đây -->
 </body>
 </html>

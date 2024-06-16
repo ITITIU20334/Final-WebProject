@@ -52,7 +52,7 @@
                 <td><?php echo $r['email'] ?></td>
                 <td><?php echo $r['username'] ?></td>
                 <td><?php echo $r['mypassword'] ?></td>
-                <td><button onclick="confirmDelete()">Xóa</button></td>
+                <td><button onclick="confirmDelete()">Delete</button></td>
                 <?php } ?>
             </tbody>
             </table>
@@ -61,7 +61,7 @@
     </main>
     <script>
         function confirmDelete() {
-            var confirmDelete = confirm('Bạn muốn xóa không?');
+            var confirmDelete = confirm('Do you want to delete?');
             if (confirmDelete) {
                 window.location.href = 'khachhang/deletekhach.php?id=<?php echo $r['id'] ?>';
             }

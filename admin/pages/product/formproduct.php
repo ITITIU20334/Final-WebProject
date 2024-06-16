@@ -30,19 +30,19 @@ foreach ($data as $r) {
     <form method="POST" action="update.php" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $r['id'] ?>">
         <div class="">
-            <label for="img" class="col-form-label">Ảnh:</label>
+            <label for="img" class="col-form-label">Image:</label>
             <input type="file" class="form-control" id="img" accept=".jpg,.png,.jpeg" name="img">
         </div>
         <div class="">
-            <label for="Name" class="col-form-label">Tên sản phẩm:</label>
+            <label for="Name" class="col-form-label">Name product:</label>
             <input type="text" class="form-control" id="Name" name="name" value="<?php echo $r['model'] ?>">
         </div>
         <div class="">
-            <label for="Gia" class="col-form-label">Giá:</label>
+            <label for="Gia" class="col-form-label">Price:</label>
             <input type="text" class="form-control" id="Gia" name="gia" value="<?php echo $r['price'] ?>">
         </div>
         <div class="">
-            <label for="GhiChu" class="col-form-label">Ghi Chú:</label>
+            <label for="GhiChu" class="col-form-label">Description:</label>
             <input type="text" class="form-control" id="GhiChu" name="ghichu" value="<?php echo $r['description'] ?>">
         </div>
         <select name="loai" id="loai">
@@ -53,7 +53,7 @@ foreach ($data as $r) {
             <?php } ?>
         </select>
         <div class="modal-footer">
-            <button type="submit" name="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
+            <button type="submit" name="submit" class="btn btn-primary">Update</button>
         </div>
     </form>
 <?php

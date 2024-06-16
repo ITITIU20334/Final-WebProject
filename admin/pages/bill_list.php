@@ -24,41 +24,38 @@
                 <div class="container-fluid px">
         <?php 
             include "include/header.php";
+            $cate = $conn -> query("SELECT * FROM bills ");
+            $cate->execute();
+            $countbills= $cate->fetchAll(PDO::FETCH_ASSOC);
 
-
-            $stm = $conn -> query("SELECT * FROM `products`");
-            $stm->execute();
-            $data = $stm->fetchAll(PDO::FETCH_ASSOC);
-
-      
-   
         ?>
-        <a href="./product/productadd.php"><button>Add Product</button></a>
-        
+        <?php
+            include 'category/categoryadd.php'
+        ?>
              <table class="table">
             <thead>
                 <tr>
-                <th scope="col">id</th>
-                <th scope="col">name</th>
-                <th scope="col">imagine</th>
-                <th scope="col">price</th>
-                <th scope="col">status</th>
-                <th scope="col">type</th>
-                <th scope="col">action</th>
+                <th scope="col">Bills_ID</th>
+                <th scope="col">User_ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Total_Price</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($data as $r){
+                <?php foreach($countbills as $r){
                      ?>
                 <tr>
-                <td><?php echo $r['id'] ?></td>
-                <td><?php echo $r['model'] ?></td>
-                <td><img src="../asets/img/<?php echo $r['image'] ?>" alt="img" height="50" with="50"></td>
-                <td><?php echo $r['price'] ?></td>
-                <td><?php echo $r['description'] ?></td>
-                    
-                <td><?php echo $r['category_id'] ?></td>
-                <td><a href="product/formproduct.php?id= <?php echo $r['id'] ?>"><button>Edit</button></a> <button onclick="confirmDelete()">Delete</button></td>
+                <td><?php echo $r['bills_id'] ?></td>
+                <td><?php echo $r['user_id'] ?></td>
+                <td><?php echo $r['name'] ?></td>
+                <td><?php echo $r['total_price'] ?></td>
+                <td><?php echo $r['address'] ?></td>
+                <td><?php echo $r['phone'] ?></td>
+                <td><?php echo $r['email'] ?></td>
+                <td><button onclick="confirmDelete()">Delete</button></td>
                 <?php } ?>
             </tbody>
             </table>
@@ -67,9 +64,9 @@
     </main>
     <script>
         function confirmDelete() {
-            var confirmDelete = confirm('Do you want delete?');
+            var confirmDelete = confirm('Do you want to delete?');
             if (confirmDelete) {
-                window.location.href = 'product/deleteProduct.php?id=<?php echo $r['id'] ?>';
+                window.location.href = 'bill/deletebill.php?id=<?php echo $r['bills_id'] ?>';
             }
         }
     </script>

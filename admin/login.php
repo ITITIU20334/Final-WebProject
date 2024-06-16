@@ -17,7 +17,7 @@ if(isset($_POST['login'])) {
         header("Location: pages/dashboard.php");
         exit();
     } else {
-        echo "Tên đăng nhập hoặc mật khẩu không đúng!";
+        echo "Account or Password Wrong!";
     }
 }
 

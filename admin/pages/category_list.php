@@ -36,14 +36,12 @@
         <?php
             include 'category/categoryadd.php'
         ?>
-                <?php         var_dump($count); 
-                var_dump($countCate);?>
              <table class="table">
             <thead>
                 <tr>
                 <th scope="col">id</th>
                 <th scope="col">name</th>
-                <th scope="col">So luong</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -71,7 +69,7 @@
                 }
                 ?>
                 </td>
-                <td><a href="category/formcate.php?id= <?php echo $r['id'] ?>"><button>Edit</button></a> <button onclick="confirmDelete()">Xóa</button></td>
+                <td><a href="category/formcate.php?id= <?php echo $r['id'] ?>"><button>Edit</button></a> <button onclick="confirmDelete()">Delete</button></td>
                 <?php } ?>
             </tbody>
             </table>
@@ -80,7 +78,7 @@
     </main>
     <script>
         function confirmDelete() {
-            var confirmDelete = confirm('Bạn muốn xóa không?');
+            var confirmDelete = confirm('Do you want to delete?');
             if (confirmDelete) {
                 window.location.href = 'category/deleteCate.php?id=<?php echo $r['id'] ?>';
             }

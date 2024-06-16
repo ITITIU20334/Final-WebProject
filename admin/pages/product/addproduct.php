@@ -21,9 +21,9 @@
 
         // Kiểm tra và thông báo kết quả
         if ($stmt) {
-            echo "Sản phẩm đã được thêm vào cơ sở dữ liệu!";
+            echo "The product has been added to the database!";
         } else {
-            echo "Có lỗi xảy ra khi thêm sản phẩm!";
+            echo "An error occurred while adding a product!";
         }
     }
 
